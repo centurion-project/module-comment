@@ -1,0 +1,28 @@
+<ul class="comment-list" style="margin-right: 300px">
+    <?php
+    
+    $this->getCache()->addTag(array($this->message, $this->message->walls));
+    
+    $total = count($this->message->walls);
+    if (isset($this->full)) :
+        $i = 0;
+    else :
+        $i = max(0, $total - $this->messageMax);
+    endif;
+        
+    for ( ; $i < $total ; $i++) :
+        $response = $this->message->walls[$i];
+        $profile = $response->by_user->profiles[0];
+        ?>
+        <li>
+            <a href="<?php echo ($this->guestToken === true) ? $this->url(array(), 'login') : $profile->permalink;?>" class="illus">
+                <img class="picture" src="<?php echo $profile->getAvatar()->getStaticUrl(array('cropcenterresize' => array('width' => 30, 'height' => 30)))?>" width="30" height="30" alt="" />
+            </a>
+            <div class="text">
+                <p><a href="<?php echo ($this->guestToken === true) ? $this->url(array(), 'login') : $profile->permalink; ?>"><?php echo $profile; ?></a> <?php echo $response->text?></p>
+                <p class="small"><?php echo $this->ago($response->getDateObjectBycreated_at()); ?> - <a class="trigger-comment" href="#" rel="<?php echo $this->message->id; ?>"><?php echo $this->translate('commenter'); ?></a></p>
+            </div>
+            <div class="clear"></div>
+        </li>
+    <?php endfor; ?>
+</ul>

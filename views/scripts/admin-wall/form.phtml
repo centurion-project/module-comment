@@ -1,0 +1,12 @@
+<?php
+//$this->gridForm()->addHeader($this->form, array(
+//    'elements' =>  array('')
+//));
+
+$this->gridForm()->addMain($this->form, array(
+    'label'         => 'Auto generated form',
+    'description'   => 'Auto generated form',
+    'elements'      => array('user_id', 'by_user_id', 'text', 'proxy_model_id', 'proxy_id', 'is_info', 'response_to_id')
+));
+
+echo $this->partial('grid/_form.phtml', $this);

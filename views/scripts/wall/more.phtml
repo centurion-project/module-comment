@@ -1,0 +1,5 @@
+<?php if ($this->messages->getCurrentPageNumber() < $this->messages->count()): ?>
+    <a id="wall-more" href="<?php echo $this->url(array('proxyId' => $this->proxyId, 'id' => $this->id, 'page' => $this->messages->getCurrentPageNumber() + 1), 'user_wall_more'); ?>">
+        <img class="icon icon-arrow-down" src="/layouts/frontoffice/images/px.png" width="8" height="16" alt="" /> <?php echo $this->translate('Plus de feeds');?>
+    </a>
+<?php endif; ?>

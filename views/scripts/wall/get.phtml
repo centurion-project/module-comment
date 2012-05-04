@@ -1,0 +1,17 @@
+<?php if ($this->messages->getCurrentPageNumber() == 1): ?>
+    <?php
+    echo $this->form;
+    ?>
+    <ul class="msg-list">
+<?php endif; ?>
+        
+<?php echo $this->partial('wall/messagesli.phtml', $this); ?>
+        
+<?php if ($this->messages->getCurrentPageNumber() == 1): ?>
+    </ul>
+    
+    <span id="div-more">
+        <?php echo $this->partial('wall/more.phtml', $this); ?>
+    </span>
+
+<?php endif; ?>
